@@ -1401,7 +1401,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <part name="J1" library="OPL" deviceset="MICRO-SDCARD-CONNECTOR" device="-3300060P1"/>
 <part name="J2" library="OPL" deviceset="JST-2P-SMD-PW" device="-3410050P1"/>
 <part name="U2" library="OPL" deviceset="CN3065" device="-1320040P1"/>
-<part name="R30" library="OPL" deviceset="R*" device="-0603" value="10K"/>
+<part name="R2" library="OPL" deviceset="R*" device="-0603" value="10K"/>
 <part name="U3" library="OPL" deviceset="XC6206-3.3" device="-1300260P1"/>
 <part name="J3" library="OPL" deviceset="MICRO-USB-5P" device="-340015001"/>
 <part name="J4" library="OPL" deviceset="CONNECTOR-HEADER-2X3P" device="-3460180P1"/>
@@ -1420,6 +1420,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <part name="J6" library="OPL" deviceset="SCREW-TERMINAL-2P" device="-3470070P1"/>
 <part name="J7" library="OPL" deviceset="CONNECTOR-HEADER-6P" device="-3460650P1"/>
 <part name="C10" library="OPL" deviceset="C*" device="-0603" value="100nF"/>
+<part name="R1" library="OPL" deviceset="R*" device="-0603"/>
 </parts>
 <sheets>
 <sheet>
@@ -1430,7 +1431,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <instance part="J1" gate="J" x="149.86" y="83.82"/>
 <instance part="J2" gate="J" x="74.93" y="128.27" rot="R270"/>
 <instance part="U2" gate="U" x="35.56" y="118.11"/>
-<instance part="R30" gate="R" x="-19.05" y="83.82"/>
+<instance part="R2" gate="R" x="-19.05" y="83.82"/>
 <instance part="U3" gate="U" x="102.87" y="121.92"/>
 <instance part="J3" gate="USB" x="-19.05" y="118.11"/>
 <instance part="J4" gate="J" x="147.32" y="35.56"/>
@@ -1449,6 +1450,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <instance part="J6" gate="J" x="93.98" y="46.99" rot="R270"/>
 <instance part="J7" gate="J" x="138.43" y="118.11"/>
 <instance part="C10" gate="C" x="158.75" y="111.76"/>
+<instance part="R1" gate="R" x="20.32" y="119.38"/>
 </instances>
 <busses>
 </busses>
@@ -1469,7 +1471,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <wire x1="-22.86" y1="45.72" x2="-22.86" y2="48.26" width="0.1524" layer="91"/>
 <junction x="-22.86" y="48.26"/>
 <label x="-25.4" y="96.52" size="1.778" layer="95"/>
-<pinref part="R30" gate="R" pin="1"/>
+<pinref part="R2" gate="R" pin="1"/>
 <junction x="-22.86" y="83.82"/>
 <pinref part="C1" gate="C" pin="2"/>
 <junction x="-22.86" y="60.96"/>
@@ -1577,8 +1579,11 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 </segment>
 <segment>
 <pinref part="U2" gate="U" pin="TEMP"/>
-<wire x1="24.13" y1="121.92" x2="16.51" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="24.13" y1="121.92" x2="15.24" y2="121.92" width="0.1524" layer="91"/>
 <label x="16.51" y="121.92" size="1.778" layer="95"/>
+<pinref part="R1" gate="R" pin="1"/>
+<wire x1="16.51" y1="119.38" x2="15.24" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="119.38" x2="15.24" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C7" gate="C" pin="2"/>
@@ -1708,7 +1713,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <label x="132.08" y="33.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R30" gate="R" pin="2"/>
+<pinref part="R2" gate="R" pin="2"/>
 <pinref part="U1" gate="U" pin="PC6(/RESET)"/>
 <wire x1="-15.24" y1="83.82" x2="3.81" y2="83.82" width="0.1524" layer="91"/>
 <label x="5.08" y="83.82" size="1.778" layer="95"/>
@@ -1835,6 +1840,12 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <wire x1="142.24" y1="111.76" x2="154.94" y2="111.76" width="0.1524" layer="91"/>
 <label x="154.94" y="111.76" size="1.778" layer="95" rot="MR0"/>
 <pinref part="C10" gate="C" pin="1"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="U2" gate="U" pin="ISET"/>
+<pinref part="R1" gate="R" pin="2"/>
 </segment>
 </net>
 </nets>
