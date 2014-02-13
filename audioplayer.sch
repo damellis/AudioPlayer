@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1697,6 +1697,8 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <classes>
 <class number="0" name="default" width="0" drill="0">
 </class>
+<class number="1" name="power" width="0.254" drill="0">
+</class>
 </classes>
 <parts>
 <part name="U1" library="OPL" deviceset="ATMEGA328P-AU" device="-1030060P1"/>
@@ -1711,8 +1713,8 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <part name="C2" library="OPL" deviceset="C*" device="-0603" value="100nF"/>
 <part name="K1" library="OPL" deviceset="BUTTON-4P" device="-3100010P1"/>
 <part name="X1" library="OPL" deviceset="CRYSTAL*" device="-0500290P1"/>
-<part name="C3" library="OPL" deviceset="C*" device="-0603"/>
-<part name="C4" library="OPL" deviceset="C*" device="-0603"/>
+<part name="C3" library="OPL" deviceset="C*" device="-0603" value="22pF"/>
+<part name="C4" library="OPL" deviceset="C*" device="-0603" value="22pF"/>
 <part name="J5" library="OPL" deviceset="AUDIO-CONNECTOR-6P-SMD" device="-3440030P1"/>
 <part name="C5" library="OPL" deviceset="C-POLAR*" device="-B" value="22uF"/>
 <part name="C6" library="OPL" deviceset="C-POLAR*" device="-A" value="10uF"/>
@@ -1722,7 +1724,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <part name="J6" library="OPL" deviceset="SCREW-TERMINAL-2P" device="-3470070P1"/>
 <part name="J7" library="OPL" deviceset="CONNECTOR-HEADER-6P" device="-3460650P1"/>
 <part name="C10" library="OPL" deviceset="C*" device="-0603" value="100nF"/>
-<part name="R1" library="OPL" deviceset="R*" device="-0603"/>
+<part name="R1" library="OPL" deviceset="R*" device="-0603" value="4.7K"/>
 <part name="J8" library="OPL" deviceset="CONNECTOR-HEADER-6P" device="-3460270P1"/>
 <part name="J10" library="OPL" deviceset="CONNECTOR-HEADER-8P" device="-3460290P1"/>
 <part name="J9" library="OPL" deviceset="CONNECTOR-HEADER-10P" device="-3460170P1"/>
@@ -1765,7 +1767,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <busses>
 </busses>
 <nets>
-<net name="3V3" class="0">
+<net name="3V3" class="1">
 <segment>
 <pinref part="U1" gate="U" pin="AVCC"/>
 <wire x1="12.7" y1="73.66" x2="-22.86" y2="73.66" width="0.1524" layer="91"/>
@@ -1807,11 +1809,6 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <junction x="118.11" y="121.92"/>
 </segment>
 <segment>
-<pinref part="J7" gate="J" pin="3"/>
-<wire x1="142.24" y1="119.38" x2="154.94" y2="119.38" width="0.1524" layer="91"/>
-<label x="154.94" y="119.38" size="1.778" layer="95" rot="MR0"/>
-</segment>
-<segment>
 <pinref part="J11" gate="J" pin="2"/>
 <wire x1="-10.16" y1="30.48" x2="6.35" y2="30.48" width="0.1524" layer="91"/>
 <label x="6.35" y="30.48" size="1.778" layer="95" rot="MR0"/>
@@ -1822,7 +1819,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <label x="6.35" y="25.4" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
 <pinref part="U1" gate="U" pin="GND@1"/>
 <pinref part="U1" gate="U" pin="GND@2"/>
@@ -1952,7 +1949,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <label x="6.35" y="20.32" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
-<net name="5V" class="0">
+<net name="5V" class="1">
 <segment>
 <pinref part="J3" gate="USB" pin="VCC"/>
 <wire x1="-8.89" y1="123.19" x2="-1.27" y2="123.19" width="0.1524" layer="91"/>
@@ -2124,7 +2121,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <wire x1="72.39" y1="53.34" x2="60.96" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="VBAT" class="0">
+<net name="VBAT" class="1">
 <segment>
 <pinref part="U2" gate="U" pin="BAT"/>
 <wire x1="46.99" y1="114.3" x2="57.15" y2="114.3" width="0.1524" layer="91"/>
@@ -2325,6 +2322,13 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <pinref part="J11" gate="J" pin="1"/>
 <wire x1="-10.16" y1="33.02" x2="6.35" y2="33.02" width="0.1524" layer="91"/>
 <label x="6.35" y="33.02" size="1.778" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="VFTDI" class="1">
+<segment>
+<pinref part="J7" gate="J" pin="3"/>
+<wire x1="142.24" y1="119.38" x2="154.94" y2="119.38" width="0.1524" layer="91"/>
+<label x="154.94" y="119.38" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 </nets>
