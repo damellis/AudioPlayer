@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1745,7 +1745,7 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <instance part="J4" gate="J" x="162.56" y="31.75"/>
 <instance part="C1" gate="C" x="-19.05" y="60.96" rot="R180"/>
 <instance part="C2" gate="C" x="132.08" y="80.01" rot="R270"/>
-<instance part="K1" gate="K" x="-5.08" y="81.28"/>
+<instance part="K1" gate="K" x="-5.08" y="93.98"/>
 <instance part="X1" gate="X" x="8.89" y="63.5" rot="R90"/>
 <instance part="C3" gate="C" x="5.08" y="67.31"/>
 <instance part="C4" gate="C" x="5.08" y="59.69"/>
@@ -1824,10 +1824,6 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <pinref part="U1" gate="U" pin="GND@1"/>
 <pinref part="U1" gate="U" pin="GND@2"/>
 <wire x1="12.7" y1="53.34" x2="12.7" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U1" gate="U" pin="GND"/>
-<wire x1="12.7" y1="78.74" x2="3.81" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="3.81" y1="78.74" x2="-13.97" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="-13.97" y1="78.74" x2="-15.24" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="78.74" x2="-15.24" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="60.96" x2="-15.24" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="53.34" x2="1.27" y2="53.34" width="0.1524" layer="91"/>
@@ -1835,10 +1831,6 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <label x="5.08" y="50.8" size="1.778" layer="95"/>
 <pinref part="C1" gate="C" pin="1"/>
 <junction x="-15.24" y="60.96"/>
-<pinref part="K1" gate="K" pin="B0"/>
-<junction x="-13.97" y="78.74"/>
-<pinref part="K1" gate="K" pin="B1"/>
-<junction x="3.81" y="78.74"/>
 <pinref part="C3" gate="C" pin="1"/>
 <pinref part="C4" gate="C" pin="1"/>
 <wire x1="1.27" y1="53.34" x2="12.7" y2="53.34" width="0.1524" layer="91"/>
@@ -1846,6 +1838,13 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <wire x1="1.27" y1="59.69" x2="1.27" y2="53.34" width="0.1524" layer="91"/>
 <junction x="1.27" y="59.69"/>
 <junction x="1.27" y="53.34"/>
+<pinref part="U1" gate="U" pin="GND"/>
+<wire x1="12.7" y1="78.74" x2="-15.24" y2="78.74" width="0.1524" layer="91"/>
+<label x="5.08" y="78.74" size="1.778" layer="95"/>
+<pinref part="K1" gate="K" pin="A0"/>
+<wire x1="-13.97" y1="96.52" x2="-15.24" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="96.52" x2="-15.24" y2="78.74" width="0.1524" layer="91"/>
+<junction x="-15.24" y="78.74"/>
 </segment>
 <segment>
 <pinref part="J3" gate="USB" pin="GND@1"/>
@@ -2055,18 +2054,6 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <label x="147.32" y="29.21" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R2" gate="R" pin="2"/>
-<pinref part="U1" gate="U" pin="PC6(/RESET)"/>
-<wire x1="-15.24" y1="83.82" x2="3.81" y2="83.82" width="0.1524" layer="91"/>
-<label x="5.08" y="83.82" size="1.778" layer="95"/>
-<pinref part="K1" gate="K" pin="A0"/>
-<junction x="-15.24" y="83.82"/>
-<pinref part="K1" gate="K" pin="A1"/>
-<wire x1="3.81" y1="83.82" x2="12.7" y2="83.82" width="0.1524" layer="91"/>
-<junction x="3.81" y="83.82"/>
-<wire x1="-15.24" y1="83.82" x2="-13.97" y2="83.82" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="C10" gate="C" pin="2"/>
 <wire x1="162.56" y1="111.76" x2="173.99" y2="111.76" width="0.1524" layer="91"/>
 <label x="170.18" y="111.76" size="1.778" layer="95"/>
@@ -2075,6 +2062,16 @@ http://www.consonance-elec.com/pdf/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E%E4%B9%A6
 <pinref part="J11" gate="J" pin="3"/>
 <wire x1="-10.16" y1="27.94" x2="6.35" y2="27.94" width="0.1524" layer="91"/>
 <label x="6.35" y="27.94" size="1.778" layer="95" rot="MR0"/>
+</segment>
+<segment>
+<pinref part="R2" gate="R" pin="2"/>
+<pinref part="U1" gate="U" pin="PC6(/RESET)"/>
+<wire x1="-15.24" y1="83.82" x2="3.81" y2="83.82" width="0.1524" layer="91"/>
+<label x="5.08" y="83.82" size="1.778" layer="95"/>
+<pinref part="K1" gate="K" pin="B1"/>
+<wire x1="3.81" y1="83.82" x2="12.7" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="3.81" y1="91.44" x2="3.81" y2="83.82" width="0.1524" layer="91"/>
+<junction x="3.81" y="83.82"/>
 </segment>
 </net>
 <net name="N$25" class="0">
