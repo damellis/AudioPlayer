@@ -1,0 +1,6 @@
+Simple, Arduino-compatible audio player, designed to be produced using
+Seeedstudio's PCBA service (http://www.seeedstudio.com/service/index.php).
+Only uses parts from the Seeedstudio open parts library (OPL), including
+an ATmega328, micro-SD card slot, lipo connector and charging circuit,
+headphone jack, etc. The full list of parts in the OPL can be found here:
+http://www.seeedstudio.com/wiki/Open_parts_library
