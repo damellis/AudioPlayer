@@ -88,36 +88,38 @@ ISR(TIMER1_COMPA_vect) {
   dh = tmp >> 8;
   dl = tmp;
 #endif //DVOLUME
+  
+  OCR2B = dh;
 
-  // dac chip select low
-  mcpDacCsLow();
-  
-  // send DAC config bits
-  mcpDacSdiLow();
-  mcpDacSckPulse();  // DAC A
-  mcpDacSckPulse();  // unbuffered
-  mcpDacSdiHigh();
-  mcpDacSckPulse();  // 1X gain
-  mcpDacSckPulse();  // no SHDN
-  
-  // send high 8 bits
-  mcpDacSendBit(dh,  7);
-  mcpDacSendBit(dh,  6);
-  mcpDacSendBit(dh,  5);
-  mcpDacSendBit(dh,  4);
-  mcpDacSendBit(dh,  3);
-  mcpDacSendBit(dh,  2);
-  mcpDacSendBit(dh,  1);
-  mcpDacSendBit(dh,  0);
-  
-  // send low 4 bits
-  mcpDacSendBit(dl,  7);
-  mcpDacSendBit(dl,  6);
-  mcpDacSendBit(dl,  5);
-  mcpDacSendBit(dl,  4);
-  
-  // chip select high - done
-  mcpDacCsHigh();
+//  // dac chip select low
+//  mcpDacCsLow();
+//  
+//  // send DAC config bits
+//  mcpDacSdiLow();
+//  mcpDacSckPulse();  // DAC A
+//  mcpDacSckPulse();  // unbuffered
+//  mcpDacSdiHigh();
+//  mcpDacSckPulse();  // 1X gain
+//  mcpDacSckPulse();  // no SHDN
+//  
+//  // send high 8 bits
+//  mcpDacSendBit(dh,  7);
+//  mcpDacSendBit(dh,  6);
+//  mcpDacSendBit(dh,  5);
+//  mcpDacSendBit(dh,  4);
+//  mcpDacSendBit(dh,  3);
+//  mcpDacSendBit(dh,  2);
+//  mcpDacSendBit(dh,  1);
+//  mcpDacSendBit(dh,  0);
+//  
+//  // send low 4 bits
+//  mcpDacSendBit(dl,  7);
+//  mcpDacSendBit(dl,  6);
+//  mcpDacSendBit(dl,  5);
+//  mcpDacSendBit(dl,  4);
+//  
+//  // chip select high - done
+//  mcpDacCsHigh();
 
 }
 //------------------------------------------------------------------------------
@@ -315,8 +317,34 @@ void WaveHC::play(void) {
   // its official!
   isplaying = 1;
   
-  // Setup mode for DAC ports
-  mcpDacInit();
+// DAM: replacing DAC w/ PWM output
+  
+//  // Setup mode for DAC ports
+//  mcpDacInit();
+  
+  //
+  
+  DDRD |= (1 << 3);
+  
+  // Set up Timer 2 to do pulse width modulation on the speaker
+  // pin.
+  
+  // Use internal clock (datasheet p.160)
+  ASSR &= ~(_BV(EXCLK) | _BV(AS2));
+  
+  // Set fast PWM mode  (p.157)
+  TCCR2A |= _BV(WGM21) | _BV(WGM20);
+  TCCR2B &= ~_BV(WGM22);
+  
+  // Do non-inverting PWM on pin OC2B (p.155)
+  // On the Arduino this is pin 3.
+  TCCR2A = (TCCR2A | _BV(COM2B1)) & ~_BV(COM2B0);
+  TCCR2A &= ~(_BV(COM2A1) | _BV(COM2A0));
+  
+  // No prescaler (p.158)
+  TCCR2B = (TCCR2B & ~(_BV(CS12) | _BV(CS11))) | _BV(CS10);
+  
+// DAM: end.
   
   // Set up timer one
   // Normal operation - no pwm not connected to pins
@@ -419,6 +447,7 @@ void WaveHC::setSampleRate(uint32_t samplerate) {
 //------------------------------------------------------------------------------
 /** Stop the player. */
 void WaveHC::stop(void) {
+  TCCR2B &= ~_BV(CS10); // DAM: stop PWM.
   TIMSK1 &= ~_BV(OCIE1A);   // turn off interrupt
   playing->isplaying = 0;
   playing = 0;
